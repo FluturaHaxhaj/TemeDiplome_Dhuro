@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+.Ds_Store
+/.Ds_Store
+/node_modules
+/package-lock.json
+.env
+../logs
+.gitattributes
+logs
+/.editorconfig
+/uploads
+

@@ -1,0 +1,45 @@
+version: "3"
+services:
+  app:
+    build: .
+    container_name: ${PROJECT:-dhuro}_app
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    networks:
+      - postgres
+  postgres:
+    container_name: ${PROJECT:-dhuro}_postgres
+    image: postgres:13.1-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  pgadmin:
+    container_name: ${PROJECT:-dhuro}_pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-dhuro@dev.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-secret}
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  postgres:
+  pgadmin:
