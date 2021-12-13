@@ -57,14 +57,14 @@ const productService = {
     let products;
     if (user) {
       const date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-      products = db()
-        .select("products_to_give.*", "media.id as media_id", "media.title")
-        .from("products_to_give")
-        .leftJoin("media", "media.model_id", "products_to_give.id")
-        .where("products_to_give.status", "!=", "taken")
-        .where("products_to_give.created_at", "<=", date)
-        .returning("*");
-    } else {
+      // products = db()
+      //   .select("products_to_give.*", "media.id as media_id", "media.title")
+      //   .from("products_to_give")
+      //   .leftJoin("media", "media.model_id", "products_to_give.id")
+      //   .where("products_to_give.status", "!=", "taken")
+      //   .where("products_to_give.created_at", "<=", date)
+      //   .returning("*");
+      // } else {
       products = db()
         .select("products_to_give.*", "media.id as media_id", "media.title")
         .from("products_to_give")

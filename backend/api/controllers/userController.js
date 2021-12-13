@@ -98,7 +98,7 @@ const deleteUser = async (req, res) => {
   try {
     validateRequest(req);
 
-    const user = await UserService.deleteUser(req.user.id);
+    const user = await UserService.deleteUser(req.query.user_id);
 
     return res.json({ user });
   } catch (err) {
