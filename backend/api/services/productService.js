@@ -1,25 +1,21 @@
+const fs = require("fs");
 const { db } = require("../../db");
 const HttpError = require("../../errorTypes/HttpError");
 const mediaService = require("./mediaService");
 const userService = require("./userService");
 const commentService = require("./commentService");
-const fs = require("fs");
+const { getLocationFromAddress } = require("../../helpers/locationHelper");
 
 const productService = {
   async createProduct(data, files, user_id) {
-    const {
-      category_id,
-      product_name,
-      description,
-      address,
-      latitude,
-      longitude,
-    } = data;
+    const { category_id, product_name, description, address } = data;
 
     const user = await userService.getUserById(user_id);
     if (!user) {
       throw new HttpError("This user does not exist", 422);
     }
+
+    const location = await getLocationFromAddress(data.address);
 
     const product = (
       await db()
@@ -29,8 +25,8 @@ const productService = {
           product_name,
           description,
           address,
-          latitude,
-          longitude,
+          latitude: location[0].latitude,
+          longitude: location[0].longitude,
         })
         .into("products_to_give")
         .returning("*")
@@ -41,6 +37,7 @@ const productService = {
         await mediaService.insertMedia(file, product.id, "product");
       });
     }
+
     return product;
   },
 

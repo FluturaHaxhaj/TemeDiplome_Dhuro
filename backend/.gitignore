@@ -4,7 +4,7 @@ dist/
 .Ds_Store
 /.Ds_Store
 /node_modules
-/package-lock.json
+# /package-lock.json
 .env
 ../logs
 .gitattributes

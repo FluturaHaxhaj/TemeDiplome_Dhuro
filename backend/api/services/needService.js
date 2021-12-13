@@ -1,27 +1,23 @@
+const fs = require("fs");
 const { db } = require("../../db");
 const HttpError = require("../../errorTypes/HttpError");
 const mediaService = require("./mediaService");
 const userService = require("./userService");
 const commentService = require("./commentService");
-const fs = require("fs");
+const { getLocationFromAddress } = require("../../helpers/locationHelper");
 
 const needService = {
   async createNeed(data, files, user_id) {
-    const {
-      category_id,
-      product_name,
-      description,
-      date_until,
-      address,
-      latitude,
-      longitude,
-    } = data;
+    const { category_id, product_name, description, date_until, address } =
+      data;
 
     const user = await userService.getUserById(user_id);
     const specialUser = await userService.getSpecialUserById(user_id);
     if (!user && !specialUser) {
       throw new HttpError("This user does not exist", 422);
     }
+
+    const location = await getLocationFromAddress(data.address);
 
     const need = (
       await db()
@@ -32,8 +28,8 @@ const needService = {
           description,
           date_until,
           address,
-          latitude,
-          longitude,
+          latitude: location[0].latitude,
+          longitude: location[0].longitude,
         })
         .into("needs")
         .returning("*")

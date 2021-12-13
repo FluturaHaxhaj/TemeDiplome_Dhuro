@@ -5,7 +5,6 @@ const needService = require("../services/needService");
 const createNeed = async (req, res) => {
   try {
     validateRequest(req);
-    console.log({ fiel: req.files });
     const need = await needService.createNeed(req.body, req.files, req.user.id);
 
     return res.json({ need });

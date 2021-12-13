@@ -12,13 +12,13 @@ const createFakeUser = () => ({
   address: faker.address.streetAddress(),
 });
 
-// const createFakeSpecialUser = () => ({
-//   id: faker.datatype.uuid(),
-//   name: faker.name.firstName() + faker.name.lastName(),
-//   function: faker.company.suffixes(),
-//   email: faker.internet.email().toLowerCase(),
-//   address: faker.address.streetAddress(),
-// });
+const createFakeSpecialUser = () => ({
+  id: faker.datatype.uuid(),
+  name: faker.name.firstName() + faker.name.lastName(),
+  function: faker.company.suffixes(),
+  email: faker.internet.email().toLowerCase(),
+  address: faker.address.streetAddress(),
+});
 
 exports.seed = async (knex) => {
   await knex("users").insert({
@@ -32,21 +32,21 @@ exports.seed = async (knex) => {
   });
   await knex("users").insert({
     id: "447079a1-323e-4bd8-8c14-c1cbcf122bc2",
-    first_name: "Enis",
-    last_name: "Berisha",
-    email: "enis@kutia.net",
+    first_name: "Flutura",
+    last_name: "Haxhaj",
+    email: "fluturahaxhaj@hotmail.com",
     address: "Muharrem Fejza Prishtine",
     phone_number: "048100590",
     password: await hashPassword(password),
   });
 
-  // await knex("special_users").insert({
-  //   name: "Filan fisteku",
-  //   email: "filam@fisteku.com",
-  //   function: "Charity",
-  //   address: "Muharrem Fejza Prishtine",
-  //   password: await hashPassword(password),
-  // });
+  await knex("special_users").insert({
+    name: "Filan fisteku",
+    email: "filam@fisteku.com",
+    function: "Charity",
+    address: "Muharrem Fejza Prishtine",
+    password: await hashPassword(password),
+  });
 
   await knex("categories").insert({
     id: "9ff5a67f-7bba-4554-8eac-9aebe696d41d",
@@ -85,16 +85,16 @@ exports.seed = async (knex) => {
     };
     fakeUsers.push(fakeUser);
   }
-  // const special_users = [];
-  // for (let i = 0; i < 10; i++) {
-  //   let fakeSpecialUser = createFakeSpecialUser();
-  //   fakeSpecialUser = {
-  //     ...fakeSpecialUser,
-  //     password: await hashPassword(password),
-  //   };
-  //   special_users.push(fakeSpecialUser);
-  // }
+  const special_users = [];
+  for (let i = 0; i < 10; i++) {
+    let fakeSpecialUser = createFakeSpecialUser();
+    fakeSpecialUser = {
+      ...fakeSpecialUser,
+      password: await hashPassword(password),
+    };
+    special_users.push(fakeSpecialUser);
+  }
 
   await knex("users").insert(fakeUsers);
-  // await knex("special_users").insert(special_users);
+  await knex("special_users").insert(special_users);
 };
