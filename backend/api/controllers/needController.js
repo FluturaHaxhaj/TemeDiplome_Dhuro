@@ -1,6 +1,7 @@
+const needService = require("../services/needService");
+
 const { handlePromiseRejectionError } = require("../../helpers/errorHelpers");
 const { validateRequest } = require("../../helpers/validationHelpers");
-const needService = require("../services/needService");
 
 const createNeed = async (req, res) => {
   try {
@@ -78,6 +79,7 @@ const deleteNeedImages = async (req, res) => {
     return handlePromiseRejectionError(err, res);
   }
 };
+
 module.exports = {
   createNeed,
   updateNeed,

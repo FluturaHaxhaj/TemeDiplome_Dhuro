@@ -109,6 +109,7 @@ const deleteUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const allUsers = await UserService.getAllUsersFiltered(req.query);
+
     return res.json(allUsers);
   } catch (err) {
     return handlePromiseRejectionError(err, res);
@@ -118,6 +119,7 @@ const getAllUsers = async (req, res) => {
 const getLoggedInUser = async (req, res) => {
   try {
     const user = await UserService.getUserDetails(req.user.id);
+
     return res.json({ user });
   } catch (err) {
     return handlePromiseRejectionError(err, res);

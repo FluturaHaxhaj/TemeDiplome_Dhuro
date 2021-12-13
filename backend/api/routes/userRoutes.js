@@ -1,9 +1,11 @@
 const router = require("express").Router();
 
 const isAuthenticated = require("../middlewares/authorization");
-const userController = require("../controllers/userController");
-const validator = require("../validation/userValidation");
 const { upload } = require("../middlewares/fileUpload");
+
+const userController = require("../controllers/userController");
+
+const validator = require("../validation/userValidation");
 
 router.post(
   "/register",

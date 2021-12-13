@@ -1,6 +1,7 @@
+const productService = require("../services/productService");
+
 const { handlePromiseRejectionError } = require("../../helpers/errorHelpers");
 const { validateRequest } = require("../../helpers/validationHelpers");
-const productService = require("../services/productService");
 
 const createProduct = async (req, res) => {
   try {
@@ -85,6 +86,7 @@ const deleteProductImages = async (req, res) => {
     return handlePromiseRejectionError(err, res);
   }
 };
+
 module.exports = {
   createProduct,
   updateProduct,

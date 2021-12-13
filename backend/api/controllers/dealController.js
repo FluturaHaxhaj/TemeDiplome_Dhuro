@@ -1,6 +1,7 @@
+const dealService = require("../services/dealService");
+
 const { handlePromiseRejectionError } = require("../../helpers/errorHelpers");
 const { validateRequest } = require("../../helpers/validationHelpers");
-const dealService = require("../services/dealService");
 
 const createDeal = async (req, res) => {
   try {

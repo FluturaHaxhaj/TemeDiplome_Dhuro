@@ -1,7 +1,8 @@
 const router = require("express").Router();
 
-const validator = require("../validation/categoryValidation");
 const categoryController = require("../controllers/categoryController");
+
+const validator = require("../validation/categoryValidation");
 
 router.post(
   "/create",

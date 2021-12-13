@@ -1,6 +1,7 @@
+const categoryService = require("../services/categoryService");
+
 const { handlePromiseRejectionError } = require("../../helpers/errorHelpers");
 const { validateRequest } = require("../../helpers/validationHelpers");
-const categoryService = require("../services/categoryService");
 
 const createCategory = async (req, res) => {
   try {

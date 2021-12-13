@@ -1,14 +1,15 @@
-const HttpError = require("../../errorTypes/HttpError");
-
-const { hashPassword, checkPassword } = require("../../helpers/passwordHash");
 const { db } = require("../../db");
-const { createJwtToken } = require("../../helpers/jwtHeplers");
+
 const mediaService = require("./mediaService");
-const { upload } = require("../middlewares/fileUpload");
+
+const { createJwtToken } = require("../../helpers/jwtHeplers");
+const { hashPassword, checkPassword } = require("../../helpers/passwordHash");
+const HttpError = require("../../errorTypes/HttpError");
 
 const userService = {
   async createUser(data) {
     const { special_status, email, password, address, phone_number } = data;
+
     const hashedPassword = await hashPassword(password);
     delete data["confirm_password"];
 
@@ -16,6 +17,7 @@ const userService = {
     if (emailUser) {
       throw new Error("A user with this email already exists");
     }
+
     const emailExist = await db()
       .select("*")
       .from("special_users")
@@ -296,6 +298,7 @@ const userService = {
   async deleteUser(user_id) {
     const user = await userService.getUserById(user_id);
     const specialUser = await userService.getSpecialUserById(user_id);
+
     if (!user && !specialUser) {
       throw new Error("This user does not exist");
     }
@@ -359,6 +362,7 @@ const userService = {
     if (user) {
       return user;
     }
+
     const specialUser = await db()
       .select("special_users.*", "media.title")
       .from("special_users")

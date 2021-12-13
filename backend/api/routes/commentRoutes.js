@@ -1,8 +1,10 @@
 const router = require("express").Router();
 
 const isAuthenticated = require("../middlewares/authorization");
-const validator = require("../validation/commentValidation");
+
 const commentController = require("../controllers/commentController");
+
+const validator = require("../validation/commentValidation");
 
 router.post(
   "/create",

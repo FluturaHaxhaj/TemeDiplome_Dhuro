@@ -1,6 +1,7 @@
 const { db } = require("../../db");
-const HttpError = require("../../errorTypes/HttpError");
 const userService = require("./userService");
+
+const HttpError = require("../../errorTypes/HttpError");
 
 const commentService = {
   async createComment(user_id, data) {

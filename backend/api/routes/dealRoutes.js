@@ -1,8 +1,10 @@
 const router = require("express").Router();
 
 const isAuthenticated = require("../middlewares/authorization");
-const validator = require("../validation/dealValidation");
+
 const dealController = require("../controllers/dealController");
+
+const validator = require("../validation/dealValidation");
 
 router.post(
   "/create",

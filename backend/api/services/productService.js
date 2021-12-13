@@ -1,9 +1,11 @@
 const fs = require("fs");
 const { db } = require("../../db");
-const HttpError = require("../../errorTypes/HttpError");
+
 const mediaService = require("./mediaService");
 const userService = require("./userService");
 const commentService = require("./commentService");
+
+const HttpError = require("../../errorTypes/HttpError");
 const { getLocationFromAddress } = require("../../helpers/locationHelper");
 
 const productService = {

@@ -1,6 +1,7 @@
+const commentService = require("../services/commentService");
+
 const { handlePromiseRejectionError } = require("../../helpers/errorHelpers");
 const { validateRequest } = require("../../helpers/validationHelpers");
-const commentService = require("../services/commentService");
 
 const createComment = async (req, res) => {
   try {
