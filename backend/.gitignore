@@ -1,12 +1,8 @@
-node_modules/
 dist/
+/node_modules
 
 .Ds_Store
-/.Ds_Store
-/node_modules
-# /package-lock.json
 .env
-../logs
 .gitattributes
 logs
 /.editorconfig
