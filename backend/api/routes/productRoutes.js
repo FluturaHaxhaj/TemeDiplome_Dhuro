@@ -9,7 +9,7 @@ router.post(
   "/create",
   isAuthenticated,
   upload.array("images"),
-  // validator.validate("createProduct"),
+  validator.validate("createProduct"),
   productController.createProduct
 );
 

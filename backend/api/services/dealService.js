@@ -9,6 +9,7 @@ const dealService = {
     if (!user && !specialUser) {
       throw new HttpError("This user does not exist", 422);
     }
+
     const product = await db()
       .select("*")
       .from("products_to_give")
@@ -28,6 +29,7 @@ const dealService = {
       if (product.status == "taken") {
         throw new Error("This product is already taken");
       }
+
       await db()
         .update({ status: "taken", updated_at: new Date() })
         .from("products_to_give")

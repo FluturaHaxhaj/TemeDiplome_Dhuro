@@ -9,6 +9,7 @@ const commentService = {
     if (!user && !specialUser) {
       throw new HttpError("This user does not exist", 422);
     }
+
     const product = await db()
       .select("*")
       .from("products_to_give")
@@ -22,6 +23,7 @@ const commentService = {
     if (!product && !need) {
       throw new HttpError("This post does not exis!", 422);
     }
+
     return (
       await db()
         .insert({

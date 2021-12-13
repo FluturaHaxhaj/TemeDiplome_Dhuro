@@ -16,11 +16,13 @@ const needService = {
       latitude,
       longitude,
     } = data;
+
     const user = await userService.getUserById(user_id);
     const specialUser = await userService.getSpecialUserById(user_id);
     if (!user && !specialUser) {
       throw new HttpError("This user does not exist", 422);
     }
+
     const need = (
       await db()
         .insert({

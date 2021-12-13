@@ -89,11 +89,11 @@ const userService = {
 
   async forgotPassword(email) {
     const user = await userService.getUserByEmail(email);
-    // const specialUser = await db()
-    //   .select("*")
-    //   .from("special_users")
-    //   .where({ email })
-    //   .first();
+    const specialUser = await db()
+      .select("*")
+      .from("special_users")
+      .where({ email })
+      .first();
 
     if (!user) {
       throw new Error("This email is not a valid user");
@@ -118,12 +118,12 @@ const userService = {
       return { ...user, password };
     }
 
-    // await db()
-    //   .update({ password: hashedPassword })
-    //   .from("special_users")
-    //   .where({ id: specialUser.id });
+    await db()
+      .update({ password: hashedPassword })
+      .from("special_users")
+      .where({ id: specialUser.id });
 
-    // return { ...specialUser, password };
+    return { ...specialUser, password };
   },
 
   async getUserById(userId) {
@@ -211,7 +211,6 @@ const userService = {
       .where({ email: email.toLowerCase() })
       .returning("*")
       .first();
-
     const specialUser = await db()
       .select("special_users.*")
       .from("special_users")
@@ -262,15 +261,15 @@ const userService = {
         throw new Error("Old password is not correct!");
       }
     }
-    // if (specialUser) {
-    //   const passwordIsCorrect = await checkPassword(
-    //     old_password,
-    //     userExists.password
-    //   );
-    //   if (!passwordIsCorrect) {
-    //     throw new Error("Old password is not correct!");
-    //   }
-    // }
+    if (specialUser) {
+      const passwordIsCorrect = await checkPassword(
+        old_password,
+        userExists.password
+      );
+      if (!passwordIsCorrect) {
+        throw new Error("Old password is not correct!");
+      }
+    }
 
     const hashedPassword = await hashPassword(new_password);
 
@@ -280,10 +279,10 @@ const userService = {
         .from("users")
         .where({ id: user_id });
     }
-    // return await db()
-    //   .update({ password: hashedPassword })
-    //   .from("special_users")
-    //   .where({ id: specialUser.id });
+    return await db()
+      .update({ password: hashedPassword })
+      .from("special_users")
+      .where({ id: specialUser.id });
   },
 
   async getSpecialUserById(user_id) {
@@ -360,13 +359,13 @@ const userService = {
     if (user) {
       return user;
     }
-    // const specialUser = await db()
-    //   .select("special_users.*", "media.title")
-    //   .from("special_users")
-    //   .leftJoin("media", "special_user.id", "media.model_id")
-    //   .where("special_users.id", user_id)
-    //   .first();
-    // return specialUser;
+    const specialUser = await db()
+      .select("special_users.*", "media.title")
+      .from("special_users")
+      .leftJoin("media", "special_user.id", "media.model_id")
+      .where("special_users.id", user_id)
+      .first();
+    return specialUser;
   },
 };
 

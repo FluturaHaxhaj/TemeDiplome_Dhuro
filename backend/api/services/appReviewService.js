@@ -6,11 +6,10 @@ const userService = require("./userService");
 const appReviewService = {
   async createReview(data, user_id) {
     const user = await userService.getUserById(user_id);
-    const specialUser = await userService.getSpecialUserById(user_id);
-    if (!user && !specialUser) {
+    if (!user) {
       throw new HttpError("This user does not exist", 422);
     }
-    // await appReviewService.getReviewByUser(user_id);
+
     const review = await db()
       .insert({
         review_score: data.review_score,
@@ -19,6 +18,7 @@ const appReviewService = {
       })
       .into("app_review")
       .returning("*");
+
     if (user) {
       return await db()
         .select(
@@ -32,18 +32,6 @@ const appReviewService = {
         .where("app_review.id", review[0].id)
         .first();
     }
-
-    return await db()
-      .select(
-        "app_review.*",
-        "special_users.id as user_id",
-        "special_users.name",
-        "special_users.function"
-      )
-      .from("app_review")
-      .innerJoin("special_users", "app_review.user_id", "special_users.id")
-      .where("app_review.id", review[0].id)
-      .first();
   },
 
   async getReviewByUser(user_id) {
@@ -80,9 +68,11 @@ const appReviewService = {
     if (data.review_description) {
       datasToUpdate.review_description = data.review_description;
     }
+
     if (data.review_score) {
       datasToUpdate.review_score = data.review_score;
     }
+
     return (
       await db()
         .update(datasToUpdate)
@@ -119,7 +109,7 @@ const appReviewService = {
 
     return reviews;
   },
-  //todo: tofixed
+
   async getAverageReview() {
     return await db().from("app_review").avg("review_score").first();
   },

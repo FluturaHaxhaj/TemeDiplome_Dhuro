@@ -15,11 +15,12 @@ const productService = {
       latitude,
       longitude,
     } = data;
+
     const user = await userService.getUserById(user_id);
-    const specialUser = await userService.getSpecialUserById(user_id);
-    if (!user && !specialUser) {
+    if (!user) {
       throw new HttpError("This user does not exist", 422);
     }
+
     const product = (
       await db()
         .insert({
@@ -34,12 +35,12 @@ const productService = {
         .into("products_to_give")
         .returning("*")
     )[0];
+
     if (files.length > 0) {
       files.map(async (file) => {
         await mediaService.insertMedia(file, product.id, "product");
       });
     }
-    console.log({ product });
     return product;
   },
 
@@ -57,14 +58,14 @@ const productService = {
     let products;
     if (user) {
       const date = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-      //   products = db()
-      //     .select("products_to_give.*", "media.id as media_id", "media.title")
-      //     .from("products_to_give")
-      //     .leftJoin("media", "media.model_id", "products_to_give.id")
-      //     .where("products_to_give.status", "!=", "taken")
-      //     .where("products_to_give.created_at", "<=", date)
-      //     .returning("*");
-      // } else {
+      products = db()
+        .select("products_to_give.*", "media.id as media_id", "media.title")
+        .from("products_to_give")
+        .leftJoin("media", "media.model_id", "products_to_give.id")
+        .where("products_to_give.status", "!=", "taken")
+        .where("products_to_give.created_at", "<=", date)
+        .returning("*");
+    } else {
       products = db()
         .select("products_to_give.*", "media.id as media_id", "media.title")
         .from("products_to_give")
@@ -220,6 +221,7 @@ const productService = {
     if (!user && !specialUser) {
       throw new HttpError("This user does not exist", 422);
     }
+
     const product = (
       await db()
         .update({ product_name, description, address })
@@ -233,6 +235,7 @@ const productService = {
         await mediaService.insertMedia(file, product.id, "product");
       });
     }
+
     return product;
   },
 
@@ -249,6 +252,7 @@ const productService = {
         .delete()
         .from("media")
         .where({ id: media, model_id: product_id });
+
       if (deleted) {
         const image = mediaFound.title.split("/")[1];
 

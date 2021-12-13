@@ -18,7 +18,7 @@ router.get("/all", isAuthenticated, needController.getAllNeeds);
 router.get(
   "/one",
   isAuthenticated,
-  // validator.validate("getNeed"),
+  validator.validate("getNeed"),
   needController.getOneNeed
 );
 
@@ -33,7 +33,7 @@ router.put(
 router.delete(
   "/delete",
   isAuthenticated,
-  // validator.validate("getNeed"),
+  validator.validate("getNeed"),
   needController.deleteNeed
 );
 
