@@ -15,12 +15,7 @@ router.post(
 
 router.get("/all", isAuthenticated, needController.getAllNeeds);
 
-router.get(
-  "/one",
-  isAuthenticated,
-  validator.validate("getNeed"),
-  needController.getOneNeed
-);
+router.get("/one", isAuthenticated, needController.getOneNeed);
 
 router.put(
   "/update",
@@ -30,12 +25,7 @@ router.put(
   needController.updateNeed
 );
 
-router.delete(
-  "/delete",
-  isAuthenticated,
-  validator.validate("getNeed"),
-  needController.deleteNeed
-);
+router.delete("/delete", isAuthenticated, needController.deleteNeed);
 
 router.delete(
   "/delete_images",
