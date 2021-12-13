@@ -34,7 +34,6 @@ const HelpScreen = () => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              // onPress={() => navigation.navigate("details", { id: item.id })}
               style={{
                 width: "100%",
                 borderWidth: 1,

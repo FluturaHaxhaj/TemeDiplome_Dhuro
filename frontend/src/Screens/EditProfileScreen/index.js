@@ -1,9 +1,8 @@
 import { useNavigation } from "@react-navigation/core";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   Image,
   StyleSheet,
   TextInput,
@@ -96,7 +95,7 @@ const EditProfileScreen = () => {
       >
         <View style={styles.inputsView}>
           <View style={styles.headerView}>
-            <Text style={styles.headerText}>Ndrysho Profilin</Text>
+            <Text style={styles.headerText}>Ndrysho profilin</Text>
           </View>
           <View style={styles.firstNameView}>
             <Text style={styles.firstNameText}>Emri</Text>
@@ -197,7 +196,9 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   headerText: {
-    fontSize: 18,
+    fontFamily: "Arial",
+    fontSize: 20,
+    fontWeight: "bold",
     color: "#334144",
     fontWeight: "600",
   },

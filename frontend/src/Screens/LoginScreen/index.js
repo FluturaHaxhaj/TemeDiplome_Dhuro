@@ -37,7 +37,7 @@ const LoginScreen = () => {
         </View>
 
         <View style={styles.inputView}>
-          <Text style={styles.inputText}>Email Address</Text>
+          <Text style={styles.inputText}>Email</Text>
           <TextInput
             value={email}
             onChangeText={setEmail}
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   welcomeBackText: {
+    fontFamily: "Arial",
     fontSize: 20,
     fontWeight: "600",
     color: "#334144",

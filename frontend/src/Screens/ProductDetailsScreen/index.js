@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
-  Animated,
   Image,
-  FlatList,
-  Dimensions,
   TouchableOpacity,
   useWindowDimensions,
   StyleSheet,
@@ -17,10 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Images from "../../Assets/Images";
 import Header from "../../Components/Header";
 import Map from "../../Components/Map";
-import Config from "../../Config";
 import HomeActions from "../../Store/Home/Actions";
-
-const { width } = Dimensions.get("window");
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -68,26 +63,6 @@ const ProductDetails = () => {
       }}
     >
       <ScrollView>
-        {/* <FlatList
-          data={data}
-          pagingEnabled
-          style={{
-            maxHeight: 200,
-          }}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <Image
-              style={{
-                width,
-                height: 200,
-              }}
-              source={{ uri: item.title }}
-            />
-          )}
-          // data={details?.medias}
-          horizontal
-        /> */}
-
         <View>
           <ScrollView
             pagingEnabled
@@ -156,7 +131,7 @@ const ProductDetails = () => {
                     color: "white",
                   }}
                 >
-                  Take
+                  Merr
                 </Text>
               </TouchableOpacity>
             </View>
@@ -195,7 +170,25 @@ const ProductDetails = () => {
               marginTop: 20,
             }}
           >
-            <Map />
+            <View style={{ flex: 1 }}>
+              <MapView
+                provider={PROVIDER_GOOGLE}
+                initialRegion={{
+                  latitude: details ? details?.latitude : 42.6443027,
+                  longitude: details ? details?.longitude : 21.1705744,
+                  latitudeDelta: 0.07,
+                  longitudeDelta: 0.07,
+                }}
+                style={{ flex: 1, borderRadius: 12 }}
+              >
+                <Marker
+                  coordinate={{
+                    latitude: details ? details?.latitude : 42.6443027,
+                    longitude: details ? details?.longitude : 21.1705744,
+                  }}
+                />
+              </MapView>
+            </View>
           </View>
           <Text
             style={{

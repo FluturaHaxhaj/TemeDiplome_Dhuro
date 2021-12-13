@@ -31,7 +31,6 @@ local.properties
 # node.js
 #
 /node_modules
-/package-lock.json
 
 # CocoaPods
 /ios/Pods/

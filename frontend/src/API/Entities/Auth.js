@@ -72,7 +72,7 @@ class Auth {
     };
 
     axios
-      .put("http://192.168.178.65:3000/api/user/update", formData, config)
+      .put("http://localhost:3000/api/user/update", formData, config)
       .then((resp) => {
         console.log(resp);
       })

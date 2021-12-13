@@ -1,11 +1,7 @@
 import { useIsFocused, useNavigation } from "@react-navigation/core";
 import React, { useEffect, useState } from "react";
 import { View, Text, Image } from "react-native";
-import {
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-} from "react-native-gesture-handler";
+import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import Images from "../../Assets/Images.js";
 import Header from "../../Components/Header/index.js";
@@ -49,32 +45,15 @@ const HomeScreen = () => {
     setData(products);
   }, []);
 
-  // useEffect(() => {
-  //   if (searchedItems?.length > 0) {
-  //     setData(searchedItems);
-  //   } else if (selectedCategoryItems.length > 0) {
-  //     setData(selectedCategoryItems);
-  //   } else {
-  //     if (selected === "dhuro") {
-  //       setData(products);
-  //     } else {
-  //       setData(needs);
-  //     }
-  //   }
-  // }, [searchedItems, selectedCategoryItems, products, needs]);
-
   useEffect(() => {
     if (selected === "dhuro") {
-      console.log({ Dhuro: selected });
       setData(products);
       if (selectedCategoryItems.length > 0) {
-        console.log("aaa");
         setData(selectedCategoryItems);
       } else if (searchedItems?.length > 0) {
         setData(searchedItems);
       }
     } else {
-      console.log({ Need: selected });
       setData(needs);
     }
   }, [selected, searchedItems, selectedCategoryItems, products, needs]);

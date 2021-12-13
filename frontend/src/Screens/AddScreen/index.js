@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  FlatList,
   Dimensions,
-  Animated,
   Image,
   StyleSheet,
   TouchableOpacity,
@@ -12,7 +10,6 @@ import {
   Keyboard,
   Button,
   ScrollView,
-  KeyboardAvoidingView,
 } from "react-native";
 import * as ImagePicker from "react-native-image-picker";
 
@@ -20,7 +17,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Header from "../../Components/Header";
 const { width, height } = Dimensions.get("screen");
 import HomeActions from "../../Store/Home/Actions";
-import Images from "../../Assets/Images";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const AddScreen = () => {
@@ -185,8 +181,6 @@ const AddScreen = () => {
                   marginTop: 20,
                 }}
               >
-                {/* <TouchableOpacity onPress={openGallery}>
-              <Text>Select Imagesssssss</Text> */}
                 <Button
                   title="Choose Photo"
                   style={{ color: "#A80005" }}

@@ -14,9 +14,6 @@ import { useDispatch } from "react-redux";
 import Images from "../../Assets/Images";
 import HomeActions from "../../Store/Auth/Actions";
 
-const windowHeight = Dimensions.get("window").height;
-const windowWidth = Dimensions.get("window").width;
-
 const ForgotPasswordScreen = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");

@@ -124,7 +124,7 @@ class Home {
     };
 
     axios
-      .post("http://192.168.178.65:3000/api/product/create", formData, config)
+      .post("http://localhost:3000/api/product/create", formData, config)
       .then((resp) => {
         console.log(resp);
       })
@@ -167,7 +167,7 @@ class Home {
     };
 
     axios
-      .post("http://192.168.178.65:3000/api/need/create", formData, config)
+      .post("http://localhost:3000/api/need/create", formData, config)
       .then((resp) => {
         console.log(resp);
       })
