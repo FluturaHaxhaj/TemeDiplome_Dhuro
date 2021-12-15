@@ -169,6 +169,9 @@ const productService = {
       throw new HttpError("This product does not exist!", 422);
     }
 
+    const latitude = parseFloat(product.latitude);
+    const longitude = parseFloat(product.longitude);
+
     const medias = await db()
       .select("id as media_id", "title")
       .from("media")
@@ -177,7 +180,7 @@ const productService = {
 
     const comments = await commentService.getAllCommentsPerPost(id);
 
-    return { ...product, medias, comments };
+    return { ...product, latitude, longitude, medias, comments };
   },
 
   async deleteProduct(product_id) {

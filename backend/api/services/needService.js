@@ -153,6 +153,9 @@ const needService = {
       throw new HttpError("This need does not exist!", 422);
     }
 
+    const latitude = parseFloat(need.latitude);
+    const longitude = parseFloat(need.longitude);
+
     const medias = await db()
       .select("id as media_id", "title")
       .from("media")
@@ -160,7 +163,7 @@ const needService = {
       .returning("*");
 
     const comments = await commentService.getAllCommentsPerPost(id);
-    return { ...need, medias, comments };
+    return { ...need, latitude, longitude, medias, comments };
   },
 
   async deleteNeed(need_id) {
