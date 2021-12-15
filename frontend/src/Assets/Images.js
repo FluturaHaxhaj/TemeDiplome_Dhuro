@@ -3,7 +3,7 @@ const Images = {
   add: require("./Images/addIcon.png"),
   headerImage: require("./Images/headerImage.jpeg"),
   menuIcon: require("./Images/menuIcon.png"),
-  book: require("./Images/TitleHome.jpg"),
+  book: require("./Images/hello.jpeg"),
 };
 
 export default Images;
