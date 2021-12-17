@@ -13,13 +13,9 @@ This application aims to help our society create a sense of solidarity through m
 <img src="screenshots/menu.png" height="300">&nbsp;<img src="screenshots/profile.png" height="300">&nbsp;<img src="screenshots/review.png" height="300"><br>
 
 ## Developed with
-- Backend <br/>
- - Server with NodeJS (Express)
- - Database connection PostgreSQL(knex.js)
- - File upload with Multer
+- Backend : Server with NodeJS (Express), Database connection PostgreSQL(knex.js), File upload with Multer
 
-- Frontend<br/>
- - React Native
+- Frontend : React Native
 
 
 ## Developed by
