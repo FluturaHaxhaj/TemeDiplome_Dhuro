@@ -182,7 +182,7 @@ const AddScreen = () => {
                 }}
               >
                 <Button
-                  title="Choose Photo"
+                  title="Ngarko Foto"
                   style={{ color: "#A80005" }}
                   onPress={openGallery}
                 />

@@ -82,7 +82,7 @@ const EditProfileScreen = () => {
               />
             </>
           )}
-          <Button title="Choose Photo" onPress={handleChoosePhoto} />
+          <Button title="Ngarko Foto" onPress={handleChoosePhoto} />
         </View>
       </View>
       <View
@@ -116,7 +116,7 @@ const EditProfileScreen = () => {
             />
           </View>
           <View style={styles.firstNameView}>
-            <Text style={styles.firstNameText}>Address</Text>
+            <Text style={styles.firstNameText}>Adresa</Text>
             <TextInput
               value={address}
               onChangeText={setAddress}
@@ -125,7 +125,7 @@ const EditProfileScreen = () => {
             />
           </View>
           <View style={styles.firstNameView}>
-            <Text style={styles.firstNameText}>Phone Number</Text>
+            <Text style={styles.firstNameText}>Telefoni</Text>
             <TextInput
               value={phone_number}
               onChangeText={setPhoneNumber}

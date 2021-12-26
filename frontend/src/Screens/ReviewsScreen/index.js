@@ -56,7 +56,7 @@ const ReviewsScreen = () => {
               fontWeight: "500",
             }}
           >
-            Si e vlerësoni aplikacionin tone ?
+            Si e vlerësoni aplikacionin tonë ?
           </Text>
         </View>
         <View

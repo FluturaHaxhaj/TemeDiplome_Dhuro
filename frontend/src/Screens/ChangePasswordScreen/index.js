@@ -85,7 +85,7 @@ const ChangePasswordScreen = () => {
             <Text style={styles.headerText}>Ndrysho Fjalëkalimin</Text>
           </View>
           <View style={styles.firstNameView}>
-            <Text style={styles.firstNameText}>Fjalekalimi i vjeter</Text>
+            <Text style={styles.firstNameText}>Fjalëkalimi i vjetër</Text>
             <TextInput
               value={old_password}
               onChangeText={setOldPassword}
@@ -94,7 +94,7 @@ const ChangePasswordScreen = () => {
             />
           </View>
           <View style={styles.firstNameView}>
-            <Text style={styles.firstNameText}>Fjalekalimi i ri</Text>
+            <Text style={styles.firstNameText}>Fjalëkalimi i ri</Text>
             <TextInput
               value={new_password}
               onChangeText={setNewPassword}
@@ -103,7 +103,7 @@ const ChangePasswordScreen = () => {
             />
           </View>
           <View style={styles.firstNameView}>
-            <Text style={styles.firstNameText}>Konfirmo Fjalekalimi</Text>
+            <Text style={styles.firstNameText}>Konfirmo Fjalëkalimin</Text>
             <TextInput
               value={confirm_password}
               onChangeText={setConfirmPassword}
