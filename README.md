@@ -9,7 +9,8 @@ This application aims to help our society create a sense of solidarity through m
 
 ## Screenshots
 <img src="screenshots/logo.png" height="300">&nbsp; <img src="screenshots/login.png" height="300">&nbsp;<img src="screenshots/register.png" height="300"><br>
-<img src="screenshots/home_dhuro.png" height="300">&nbsp;<img src="screenshots/home_kerko.png" height="300"><br>
+<img src="screenshots/dhuro.png" height="300">&nbsp;<img src="screenshots/kerko.png" height="300"><br>
+<img src="screenshots/prodetails.png" height="300">&nbsp;<img src="screenshots/comments.png" height="300"><br>
 <img src="screenshots/menu.png" height="300">&nbsp;<img src="screenshots/profile.png" height="300">&nbsp;<img src="screenshots/review.png" height="300"><br>
 
 ## Developed with
