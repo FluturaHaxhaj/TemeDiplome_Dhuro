@@ -14,9 +14,6 @@ const validate = (method) => {
         }),
       ];
 
-    // case "getNeed":
-    //   return [query("need_id").notEmpty().withMessage("Need id is required!")];
-
     case "deleteImage":
       return [
         query("need_id").notEmpty().withMessage("Need id is required!"),
@@ -29,13 +26,7 @@ const validate = (method) => {
       ];
 
     case "updateNeed":
-      return [
-        // body("product_name")
-        //   .notEmpty()
-        //   .withMessage("Product name is required!"),
-        // body("description").notEmpty().withMessage("Description is required!"),
-        query("need_id").notEmpty().withMessage("Need id is required!"),
-      ];
+      return [query("need_id").notEmpty().withMessage("Need id is required!")];
   }
 };
 

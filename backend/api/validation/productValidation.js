@@ -32,11 +32,6 @@ const validate = (method) => {
 
     case "updateProduct":
       return [
-        body("product_name")
-          .notEmpty()
-          .withMessage("Product name is required!"),
-        body("description").notEmpty().withMessage("Description is required!"),
-        body("address").notEmpty().withMessage("Address is required!"),
         query("product_id").notEmpty().withMessage("Product id is required!"),
       ];
   }
