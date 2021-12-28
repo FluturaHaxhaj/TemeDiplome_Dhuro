@@ -33,8 +33,6 @@ $ docker-compose build
 $ docker-compose up -d
 $ docker-compose exec app sh
 ```
-### Connect pgadmin container to psql image container
-If you need to connect pgadmin to your psql then you will have to login to pgadmin ( read docker-compose.yml - pgadmin service ) and type the 'host' based on your .env variable TYPEORM_HOST
 
 ## Other useful Docker commands
 
